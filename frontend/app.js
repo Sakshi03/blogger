@@ -2,16 +2,16 @@ angular.module('blogModule', ['ui.router'])
 .controller("ParentController", function($scope, blogService){
     $scope.SendData = function () {
         // use $.param jQuery function to serialize data from JSON 
-         var data = $.param({
+         var data = ({
              email: $scope.emailId,
              password: $scope.password
          });
-         $http.post('/home',data)
-         .success(function(data,status){
-             $scope.PostDataResponse=data;
-         })
-         error(function(data,status){
-             $scope.ResponseDetails ="Data : " + data; });
+         $scope.otheresponse={};
+         postdata.then(function(response){
+             $scope.otheresponse=response.data;
+         },function(){})
+         
+        
          };
     
     const makeCallPromise = blogService.makecall();
